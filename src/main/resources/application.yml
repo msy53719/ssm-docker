@@ -1,0 +1,11 @@
+server:
+  port: 8081
+  
+logging: 
+  config: classpath:logback-spring.xml
+  
+liquibase:
+  change-log: classpath:master.xml
+  enabled: true
+  drop-first: false
+  createDatabaseIfNotExist: true

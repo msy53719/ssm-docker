@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+	<changeSet id="1" author="mosy">
+		<createTable tableName="userinfo">
+			<column name="phone" type="varchar(50)">
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+			<column name="uid" type="varchar(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="bankCardNo" type="varchar(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="certNo" type="varchar(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="name" type="varchar(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="password" type="varchar(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="tranPassword" type="varchar(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="status" type="int" defaultValueBoolean="0" />
+		</createTable>
+
+		<createTable tableName="Case">
+			<column name="id" type="int">
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+			<column name="phone" type="varchar(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="uid" type="varchar(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="bankCardNo" type="varchar(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="certNo" type="varchar(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="name" type="varchar(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="active" type="boolean"
+				defaultValueBoolean="true" />
+		</createTable>
+	</changeSet>
+</databaseChangeLog>
