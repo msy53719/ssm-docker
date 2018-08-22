@@ -11,7 +11,7 @@ spring:
    drop-first: false
    user: ssmdocker
    password: ssmdocker
-   url: jdbc:mysql://localhost:3306/testdb?createDatabaseIfNotExist=true
+   url: jdbc:mysql://localhost:3306/testdb?createDatabaseIfNotExist=true?nullNamePatternMatchesAll=true
    #driverClassName: com.mysql.jdbc.Driver
-  datasource: 
-   driverClassName: com.mysql.jdbc.Driver
+  #datasource: 
+   #driverClassName: com.mysql.jdbc.Driver
