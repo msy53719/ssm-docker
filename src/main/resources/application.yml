@@ -1,14 +1,17 @@
-server:
+server: 
   port: 8081
   
 logging: 
   config: classpath:logback-spring.xml
   
-liquibase:
-  change-log: classpath:master.xml
-  enabled: true
-  drop-first: false
-  createDatabaseIfNotExist: true
-  user: ssmdocker
-  pssword: ssmdocker
-  url: jdbc:mysql://localhost:3306/test
+spring: 
+  liquibase: 
+   change-log: classpath:master.xml
+   enabled: true
+   drop-first: false
+   user: ssmdocker
+   password: ssmdocker
+   url: jdbc:mysql://localhost:3306/testdb?createDatabaseIfNotExist=true
+   #driverClassName: com.mysql.jdbc.Driver
+  datasource: 
+   driverClassName: com.mysql.jdbc.Driver
