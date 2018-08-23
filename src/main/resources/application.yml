@@ -9,9 +9,9 @@ spring:
    change-log: classpath:master.xml
    enabled: true
    drop-first: false
-   user: ssmdocker
-   password: ssmdocker
-   url: jdbc:mysql://localhost:3306/testdb?createDatabaseIfNotExist=true?nullNamePatternMatchesAll=true
-   #driverClassName: com.mysql.jdbc.Driver
-  #datasource: 
-   #driverClassName: com.mysql.jdbc.Driver
+   
+  datasource: 
+    driverClassName: com.mysql.cj.jdbc.Driver
+    username: root
+    password: ssmdocker
+    url: jdbc:mysql://localhost:3306/testdb?createDatabaseIfNotExist=true&useSSL=true
