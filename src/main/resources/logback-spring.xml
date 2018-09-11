@@ -21,14 +21,17 @@
 		</rollingPolicy>
 				<encoder>
 			<pattern>%d{yyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50}-%msg%n</pattern>
-			<charset>UTF-8</charset>
+		  <charset>UTF-8</charset>
 		</encoder>
 		<prudent>true</prudent>
 	</appender>
 
 	<logger name="org.springframework" level="INFO" />
 	<logger name="org.apache" level="INFO" />
-
+	<logger name="org.eclipse.jetty" level="INFO" />
+	<logger name="s.d.*" level="INFO" />
+	<logger name="com.zaxxer.hikari" level="INFO" />
+	
 	<root level="debug">
 		<appender-ref ref="STDOUT" />
 		<appender-ref ref="rollFILE" />

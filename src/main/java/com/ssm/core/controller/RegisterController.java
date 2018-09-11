@@ -10,13 +10,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ssm.core.enity.User;
 
-
 @RestController
 public class RegisterController {
 	private static Logger log = LoggerFactory.getLogger(RegisterController.class);
 
-	@RequestMapping(value = "/register", method = { RequestMethod.POST }, produces = { "application/json",
-			"application/xml" }, consumes = { "application/json", "application/xml" })
+	@RequestMapping(value = "/register", method = { RequestMethod.POST }, produces = {
+			"application/json;charset=utf-8" }, consumes = { "application/json;charset=utf-8" })
 	@ResponseBody
 	public User register(@RequestBody User user) {
 		user.getId();
@@ -24,7 +23,7 @@ public class RegisterController {
 		user.getPhone();
 		user.getSex();
 		user.getSex();
-		log.debug("id:{}\n,name:{}\n,phone:{}\n,sex{}\n,email{}\n", user.getId(), user.getName(), user.getPhone(),
+		log.debug("id:{}\n name:{}\n phone:{}\n sex:{}\n email:{}\n", user.getId(), user.getName(), user.getPhone(),
 				user.getSex(), user.getEmail());
 		return user;
 	}
