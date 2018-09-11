@@ -38,16 +38,23 @@
 			<artifactId>spring-boot-starter-jetty</artifactId>
 		</dependency>
 
+		<!-- <dependency> <groupId>org.mybatis.spring.boot</groupId> <artifactId>mybatis-spring-boot-starter</artifactId> 
+			<version>1.0.0</version> </dependency> -->
 		<dependency>
-			<groupId>org.mybatis.spring.boot</groupId>
-			<artifactId>mybatis-spring-boot-starter</artifactId>
-			<version>1.0.0</version>
-		</dependency>
-
-  		<dependency>
 			<groupId>org.liquibase</groupId>
 			<artifactId>liquibase-core</artifactId>
 			<version>${liquibase.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jdbc</artifactId>
 		</dependency>
 		<!-- mysql依赖 -->
 		<dependency>
@@ -61,7 +68,6 @@
 			<artifactId>springfox-swagger2</artifactId>
 			<version>2.7.0</version>
 		</dependency>
-
 
 		<dependency>
 			<groupId>io.springfox</groupId>
@@ -79,6 +85,7 @@
 					<include>**/*.properties</include>
 					<include>**/*.xml</include>
 					<include>**/*.tld</include>
+					<include>**/*.yml</include>
 				</includes>
 				<filtering>false</filtering>
 			</resource>
@@ -131,24 +138,13 @@
 					</archive>
 				</configuration>
 			</plugin>
-
-			<plugin>
-				<groupId>com.spotify</groupId>
-				<artifactId>docker-maven-plugin</artifactId>
-				<configuration>
-					<imageName>${docker.image.prefix}/${project.artifactId}</imageName>
-					<!--<dockerDirectory>src/main/docker</dockerDirectory> -->
-					<baseImage>java:8</baseImage>
-					<entryPoint>["java", "-jar", "/${project.build.finalName}.jar"]</entryPoint>
-					<resources>
-						<resource>
-							<targetPath>/</targetPath>
-							<directory>${project.build.directory}</directory>
-							<include>${project.build.finalName}.jar</include>
-						</resource>
-					</resources>
-				</configuration>
-			</plugin>
+			<!--<dockerDirectory>src/main/docker</dockerDirectory> -->
+			<!-- <plugin> <groupId>com.spotify</groupId> <artifactId>docker-maven-plugin</artifactId> 
+				<configuration> <imageName>${docker.image.prefix}/${project.artifactId}</imageName> 
+				<baseImage>java:8</baseImage> <entryPoint>["java", "-jar", "/${project.build.finalName}.jar"]</entryPoint> 
+				<resources> <resource> <targetPath>/</targetPath> <directory>${project.build.directory}</directory> 
+				<include>${project.build.finalName}.jar</include> </resource> </resources> 
+				</configuration> </plugin> -->
 		</plugins>
 	</build>
 
@@ -170,10 +166,10 @@
 			</snapshots>
 		</repository>
 		<repository>
-            <id>nexus-aliyun</id>
-            <name>Nexus aliyun</name>
-            <url>http://maven.aliyun.com/nexus/content/groups/public</url>
-        </repository>
+			<id>nexus-aliyun</id>
+			<name>Nexus aliyun</name>
+			<url>http://maven.aliyun.com/nexus/content/groups/public</url>
+		</repository>
 	</repositories>
 
 	<pluginRepositories>
