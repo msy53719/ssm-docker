@@ -1,0 +1,7 @@
+version: "3.3"
+services: 
+  ssmdocker.server:
+    image: ssmdocker:latest
+    container_name: ssmdocker.server
+    ports:
+      - 8081:8081

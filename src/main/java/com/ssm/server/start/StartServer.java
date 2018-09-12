@@ -9,9 +9,9 @@ import org.springframework.context.annotation.ComponentScan;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
-@ComponentScan(basePackages = {"com.ssm.core"}) 
+@ComponentScan(basePackages = { "com.ssm.core" })
 @EnableSwagger2
-@EnableConfigurationProperties({LiquibaseProperties.class })  
+@EnableConfigurationProperties({ LiquibaseProperties.class })
 public class StartServer {
 
 	public static void main(String[] args) {

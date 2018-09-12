@@ -64,6 +64,12 @@
 			<version>2.7.0</version>
 		</dependency>
 
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>druid</artifactId>
+			<version>1.1.10</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
@@ -127,13 +133,40 @@
 					</archive>
 				</configuration>
 			</plugin>
-			<!--<dockerDirectory>src/main/docker</dockerDirectory> -->
-			<!-- <plugin> <groupId>com.spotify</groupId> <artifactId>docker-maven-plugin</artifactId> 
-				<configuration> <imageName>${docker.image.prefix}/${project.artifactId}</imageName> 
-				<baseImage>java:8</baseImage> <entryPoint>["java", "-jar", "/${project.build.finalName}.jar"]</entryPoint> 
-				<resources> <resource> <targetPath>/</targetPath> <directory>${project.build.directory}</directory> 
-				<include>${project.build.finalName}.jar</include> </resource> </resources> 
-				</configuration> </plugin> -->
+
+			<plugin>
+				<groupId>com.spotify</groupId>
+				<artifactId>docker-maven-plugin</artifactId>
+				<version>1.0.0</version>
+				<configuration>
+					<imageName>ssmdocker</imageName>
+					<!-- <dockerHost>https://192.168.99.100:2376</dockerHost> -->
+					<!--<dockerDirectory>src/main/docker</dockerDirectory> -->
+					<baseImage>java:8</baseImage>
+					<resources>
+							<resource>
+								<targetPath>/work</targetPath>
+								<directory>${project.build.directory}</directory>
+								<include>*.jar</include>
+							</resource>
+							<resource>
+								<targetPath>/work/lib</targetPath>
+								<directory>${project.build.directory}/lib</directory>
+								<include>*.jar</include>
+							</resource>
+							<resource>
+								<targetPath>/app</targetPath>
+								<directory>${project.basedir}/ext</directory>
+								<include>start.sh</include>
+							</resource>
+						</resources>
+						<workdir>/app</workdir>
+						<runs>
+							<run>chmod 777 start.sh</run>
+						</runs>
+						<cmd>sh /app/start.sh docker</cmd>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 
