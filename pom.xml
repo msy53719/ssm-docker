@@ -38,6 +38,10 @@
 			<artifactId>spring-boot-starter-jetty</artifactId>
 		</dependency>
 
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jdbc</artifactId>
+		</dependency>
 		<!-- <dependency> <groupId>org.mybatis.spring.boot</groupId> <artifactId>mybatis-spring-boot-starter</artifactId> 
 			<version>1.0.0</version> </dependency> -->
 		<dependency>
@@ -144,27 +148,27 @@
 					<!--<dockerDirectory>src/main/docker</dockerDirectory> -->
 					<baseImage>java:8</baseImage>
 					<resources>
-							<resource>
-								<targetPath>/work</targetPath>
-								<directory>${project.build.directory}</directory>
-								<include>*.jar</include>
-							</resource>
-							<resource>
-								<targetPath>/work/lib</targetPath>
-								<directory>${project.build.directory}/lib</directory>
-								<include>*.jar</include>
-							</resource>
-							<resource>
-								<targetPath>/app</targetPath>
-								<directory>${project.basedir}/ext</directory>
-								<include>start.sh</include>
-							</resource>
-						</resources>
-						<workdir>/app</workdir>
-						<runs>
-							<run>chmod 777 start.sh</run>
-						</runs>
-						<cmd>sh /app/start.sh docker</cmd>
+						<resource>
+							<targetPath>/work</targetPath>
+							<directory>${project.build.directory}</directory>
+							<include>*.jar</include>
+						</resource>
+						<resource>
+							<targetPath>/work/lib</targetPath>
+							<directory>${project.build.directory}/lib</directory>
+							<include>*.jar</include>
+						</resource>
+						<resource>
+							<targetPath>/app</targetPath>
+							<directory>${project.basedir}/ext</directory>
+							<include>start.sh</include>
+						</resource>
+					</resources>
+					<workdir>/app</workdir>
+					<runs>
+						<run>chmod 777 start.sh</run>
+					</runs>
+					<cmd>sh /app/start.sh docker</cmd>
 				</configuration>
 			</plugin>
 		</plugins>
