@@ -8,16 +8,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ssm.core.enity.User;
+import com.ssm.core.dto.ResultDto;
+import com.ssm.core.dto.UserLoginDto;
 
 @RestController
-public class RegisterController {
-	private static Logger log = LoggerFactory.getLogger(RegisterController.class);
+public class UserController {
+	private static Logger log = LoggerFactory.getLogger(UserController.class);
 
 	@RequestMapping(value = "/register", method = { RequestMethod.POST }, produces = {
 			"application/json;charset=utf-8" }, consumes = { "application/json;charset=utf-8" })
 	@ResponseBody
-	public User register(@RequestBody User user) {
+	public ResultDto register(@RequestBody UserLoginDto user) {
 		user.getId();
 		user.getName();
 		user.getPhone();
@@ -25,7 +26,19 @@ public class RegisterController {
 		user.getSex();
 		log.debug("id:{}\n name:{}\n phone:{}\n sex:{}\n email:{}\n", user.getId(), user.getName(), user.getPhone(),
 				user.getSex(), user.getEmail());
-		return user;
+		return null;
+	}
+
+	@RequestMapping(value = "/login", method = { RequestMethod.POST }, produces = {
+			"application/json;charset=utf-8" }, consumes = { "application/json;charset=utf-8" })
+	@ResponseBody
+	public ResultDto userLogin(@RequestBody UserLoginDto user) {
+
+		return null;
+	}
+
+	public ResultDto queryUserInfo() {
+		return null;
 	}
 
 }

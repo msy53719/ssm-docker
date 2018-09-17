@@ -1,8 +1,8 @@
-package com.ssm.core.enity;
+package com.ssm.core.dto;
 
 import java.io.Serializable;
 
-public class User implements Serializable {
+public class UserLoginDto implements Serializable {
 
 	/**
 	 * 
