@@ -5,7 +5,7 @@
 	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 	<changeSet id="1" author="mosy">
-		<createTable tableName="UserLogin">
+		<createTable tableName="userLogin">
 			<column name="userId" type="bigint">
 				<constraints primaryKey="true" nullable="false" />
 			</column>
@@ -21,7 +21,7 @@
 			<column name="status" type="int" defaultValueBoolean="0" />
 		</createTable>
 
-		<createTable tableName="UserInfo">
+		<createTable tableName="userInfo">
 			<column name="userId" type="bigint">
 				<constraints primaryKey="true" nullable="false" />
 			</column>
@@ -40,7 +40,25 @@
 			<column name="birthday" type="varchar(50)">
 				<constraints nullable="false" />
 			</column>
-			<column name="cardId" type="varchar(50)">
+			<column name="IdcardNo" type="varchar(50)">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+
+		<createTable tableName="food">
+			<column name="id" type="int">
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+			<column name="name" type="varchar(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="type" type="varchar(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="colour" type="varchar(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="time" type="varchar(50)">
 				<constraints nullable="false" />
 			</column>
 		</createTable>
