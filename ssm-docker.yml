@@ -1,7 +1,16 @@
 version: "3.3"
 services: 
-  ssmdocker.server:
-    image: ssmdocker:latest
-    container_name: ssmdocker.server
+  mysql.db.server:
+    image: mysql:5.7
+    container_name: mysql.db.server
+    environment:
+      - LANG=C.UTF-8
+      - MYSQL_ROOT_PASSWORD=ssmdocker
+      - MYSQL_USER=ssmdocker
+      - MYSQL_PASSWORD=ssmdocker
+    tmpfs:
+      - /mysql/tmp/
+    volumes:
+      - D:\data\musql\data:/var/lib/mysql
     ports:
-      - 8081:8081
+      - 3306:3306
