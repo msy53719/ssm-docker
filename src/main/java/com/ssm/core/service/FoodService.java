@@ -11,5 +11,5 @@ public interface FoodService {
 
 	public void addFood(FoodDto fooDto);
 
-	public List<Food> queryById(int id);
+	public Food queryById(int id);
 }

@@ -16,7 +16,7 @@ public interface FoodMapper {
 	public void insertFood(Food food);
 
 	@Select("select id,name,type,colour,time from food where id=#{id}")
-	List<Food> selectFood(@Param("id") int id);
+	Food selectFood(@Param("id") int id);
 
 	@Select("select id,name,type,colour,time from food")
 	List<Food> selectAllFood();

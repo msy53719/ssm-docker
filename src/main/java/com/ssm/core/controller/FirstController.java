@@ -37,17 +37,19 @@ public class FirstController {
 	}
 
 	@RequestMapping(value = "/query/{id}", method = { RequestMethod.GET })
-	public ResultDto queryFoodById(@PathVariable int id) {
-		List<Food> list=foodService.queryById(id);
-		ResultDto resultDto = new ResultDto();
-		resultDto.setCode("0000");
-		resultDto.setMessage("成功");
-		resultDto.setList(list);
-		return resultDto;
+	public Food queryFoodById(@PathVariable int id) {
+		log.debug("id:{}", id);
+		Food food = foodService.queryById(id);
+		// ResultDto resultDto = new ResultDto();
+		// resultDto.setCode("0000");
+		// resultDto.setMessage("成功");
+		// resultDto.setList(list);
+		return food;
 	}
 
 	@RequestMapping(value = "/query/all", method = { RequestMethod.GET })
-	public ResultDto queryAllFood() {
-		return null;
+	public List<Food> queryAllFood() {
+		List<Food> list = foodService.queryAllFood();
+		return list;
 	}
 }

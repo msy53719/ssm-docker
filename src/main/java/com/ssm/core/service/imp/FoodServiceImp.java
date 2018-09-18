@@ -33,9 +33,9 @@ public class FoodServiceImp implements FoodService {
 
 	}
 
-	public List<Food> queryById(int id) {
-		List<Food> list = foodMapper.selectFood(id);
-		return list;
+	public Food queryById(int id) {
+		Food food = foodMapper.selectFood(id);
+		return food;
 	}
 
 }
