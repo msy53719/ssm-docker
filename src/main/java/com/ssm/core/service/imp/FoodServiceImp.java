@@ -1,14 +1,17 @@
 package com.ssm.core.service.imp;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ssm.core.constant.FormatConstant;
 import com.ssm.core.dao.FoodMapper;
 import com.ssm.core.dto.FoodDto;
 import com.ssm.core.enity.Food;
 import com.ssm.core.service.FoodService;
+import com.ssm.core.util.DateUtil;
 
 @Service
 public class FoodServiceImp implements FoodService {
@@ -23,11 +26,12 @@ public class FoodServiceImp implements FoodService {
 	}
 
 	public void addFood(FoodDto fooDto) {
+		int id = foodMapper.selectId();
 		Food food = new Food();
 		food.setColour(fooDto.getColour());
-		food.setId(1);
+		food.setId(id + 1);
 		food.setName(fooDto.getName());
-		food.setTime("2017-08-09");
+		food.setTime(DateUtil.DateFrom(FormatConstant.SFORMAT, new Date()));
 		food.setType(fooDto.getType());
 		foodMapper.insertFood(food);
 

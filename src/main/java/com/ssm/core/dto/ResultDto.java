@@ -2,7 +2,6 @@ package com.ssm.core.dto;
 
 import java.io.Serializable;
 import java.util.List;
-import java.util.Map;
 
 public class ResultDto implements Serializable {
 	/**
@@ -12,7 +11,6 @@ public class ResultDto implements Serializable {
 	private String code;
 	private String message;
 	private List<?> list;
-	// private Map<Object, Object> map;
 
 	public List<?> getList() {
 		return list;
@@ -21,14 +19,6 @@ public class ResultDto implements Serializable {
 	public void setList(List<?> list) {
 		this.list = list;
 	}
-
-	// public Map<Object, Object> getMap() {
-	// return map;
-	// }
-	//
-	// public void setMap(Map<Object, Object> map) {
-	// this.map = map;
-	// }
 
 	public String getCode() {
 		return code;

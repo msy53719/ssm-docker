@@ -13,7 +13,8 @@ import com.ssm.core.enity.Food;
 public interface FoodMapper {
 
 	@Insert("insert into food(id,name,type,colour,time)values(#{id},#{name},#{type},#{colour},#{time})")
-	public void insertFood(Food food);
+	// @Options(useGeneratedKeys = true, keyProperty = "id", keyColumn = "id")
+	void insertFood(Food food);
 
 	@Select("select id,name,type,colour,time from food where id=#{id}")
 	Food selectFood(@Param("id") int id);
@@ -21,4 +22,6 @@ public interface FoodMapper {
 	@Select("select id,name,type,colour,time from food")
 	List<Food> selectAllFood();
 
+	@Select("select id from food order by id desc limit 1")
+	int selectId();
 }
