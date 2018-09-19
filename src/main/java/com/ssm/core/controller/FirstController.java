@@ -1,6 +1,8 @@
 package com.ssm.core.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -36,7 +38,8 @@ public class FirstController {
 		return resultDto;
 	}
 
-	@RequestMapping(value = "/query/{id}", method = { RequestMethod.GET })
+	@RequestMapping(value = "/query/{id}", method = { RequestMethod.GET }, produces = {
+			"application/json;charset=utf-8" })
 	public Food queryFoodById(@PathVariable int id) {
 		log.debug("id:{}", id);
 		Food food = foodService.queryById(id);
@@ -47,9 +50,24 @@ public class FirstController {
 		return food;
 	}
 
-	@RequestMapping(value = "/query/all", method = { RequestMethod.GET })
+	@RequestMapping(value = "/query/all", method = { RequestMethod.GET }, produces = {
+			"application/json;charset=utf-8" })
 	public List<Food> queryAllFood() {
 		List<Food> list = foodService.queryAllFood();
 		return list;
+	}
+
+	@RequestMapping(value = "/query/allList", method = { RequestMethod.GET }, produces = {
+			"application/json;charset=utf-8" })
+	public ResultDto queryAllFoodDt() {
+		ResultDto recode = new ResultDto();
+		recode.setCode("0000");
+		recode.setMessage("查询成功");
+		List<Food> food = foodService.queryAllFood();
+		// Map<Object, Object> map = new HashMap<Object, Object>();
+		// map.put("food", list);
+		// recode.setMap(map);
+		recode.setList(food);
+		return recode;
 	}
 }
