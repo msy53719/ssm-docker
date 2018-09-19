@@ -64,7 +64,7 @@ public class FirstController {
 		// Map<Object, Object> map = new HashMap<Object, Object>();
 		// map.put("food", list);
 		// recode.setMap(map);
-		recode.setList(food);
+		recode.setData(food);
 		return recode;
 	}
 }

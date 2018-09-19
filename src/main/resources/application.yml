@@ -1,17 +1,3 @@
-server: 
-  port: 8081
-  
-logging: 
-  config: classpath:logback-spring.xml
-  
 spring: 
-  liquibase: 
-   change-log: classpath:master.xml
-   enabled: true
-   drop-first: false
-
-  datasource: 
-    driverClassName: com.mysql.cj.jdbc.Driver
-    username: root
-    password: ssmdocker
-    url: jdbc:mysql://localhost:3306/testdb?createDatabaseIfNotExist=true&useSSL=false&nullNamePatternMatchesAll=true
+  profiles: 
+    active: docker

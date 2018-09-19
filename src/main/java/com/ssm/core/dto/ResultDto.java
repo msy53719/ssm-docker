@@ -1,7 +1,6 @@
 package com.ssm.core.dto;
 
 import java.io.Serializable;
-import java.util.List;
 
 public class ResultDto implements Serializable {
 	/**
@@ -10,14 +9,24 @@ public class ResultDto implements Serializable {
 	private static final long serialVersionUID = 2510746013445666368L;
 	private String code;
 	private String message;
-	private List<?> list;
+	private Object data;
 
-	public List<?> getList() {
-		return list;
+	// private List<?> list;
+	//
+	// public List<?> getList() {
+	// return list;
+	// }
+	//
+	// public void setList(List<?> list) {
+	// this.list = list;
+	// }
+
+	public Object getData() {
+		return data;
 	}
 
-	public void setList(List<?> list) {
-		this.list = list;
+	public void setData(Object data) {
+		this.data = data;
 	}
 
 	public String getCode() {
