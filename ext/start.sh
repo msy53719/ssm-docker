@@ -1,10 +1,5 @@
 #!/bin/bash
 
-#Runtime Setup
-
-MODE=dev
-
-
 if [ "$1" = 'docker' ]; then
     echo 'using docker configuration'
     JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64"
@@ -18,7 +13,7 @@ if [ "$1" = 'docker' ]; then
 
   for t_s in {1..10} ;do
     sleep 1
-    APP_PID=$(ps -ef | grep "/data1/javaapp/ssm-docker" | grep -Ev "grep" | awk -F " " '{print $2}')
+    APP_PID=$(ps -ef | grep "/work/ssm-docker" | grep -Ev "grep" | awk -F " " '{print $2}')
     if [ "null$APP_PID" != "null" ];then
       echo ${APP_PID} > ${PID_FILE}
       break

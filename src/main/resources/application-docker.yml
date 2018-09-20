@@ -14,4 +14,4 @@ spring:
     driverClassName: com.mysql.cj.jdbc.Driver
     username: root
     password: ssmdocker
-    url: jdbc:mysql://mysql.db.server:3306/testdb?createDatabaseIfNotExist=true&useSSL=false&nullNamePatternMatchesAll=true
+    url: jdbc:mysql://mysql.db.server:3306/testdb?createDatabaseIfNotExist=true&useSSL=false&nullNamePatternMatchesAll=true&useUnicode=true&characterEncoding=UTF8

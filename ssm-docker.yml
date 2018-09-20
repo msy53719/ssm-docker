@@ -1,7 +1,7 @@
 version: "3.3"
 services: 
   mysql.db.server:
-    image: mysql:5.7
+    image: mysql:v1
     container_name: mysql.db.server
     environment:
       - LANG=C.UTF-8
@@ -11,6 +11,6 @@ services:
     tmpfs:
       - /mysql/tmp/
     volumes:
-      - D:\data\musql\data:/var/lib/mysql
+      - D:\data\mysql\data:/var/lib/mysql
     ports:
       - 3306:3306

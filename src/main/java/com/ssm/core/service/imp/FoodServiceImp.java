@@ -26,13 +26,22 @@ public class FoodServiceImp implements FoodService {
 	}
 
 	public void addFood(FoodDto fooDto) {
-		int id = foodMapper.selectId();
+		Food f = foodMapper.selectObj();
 		Food food = new Food();
-		food.setColour(fooDto.getColour());
-		food.setId(id + 1);
-		food.setName(fooDto.getName());
-		food.setTime(DateUtil.DateFrom(FormatConstant.SFORMAT, new Date()));
-		food.setType(fooDto.getType());
+		if (f == null) {
+			food.setColour(fooDto.getColour());
+			food.setId(1);
+			food.setName(fooDto.getName());
+			food.setTime(DateUtil.DateFrom(FormatConstant.SFORMAT, new Date()));
+			food.setType(fooDto.getType());
+		} else {
+			int id = foodMapper.selectId();
+			food.setColour(fooDto.getColour());
+			food.setId(id + 1);
+			food.setName(fooDto.getName());
+			food.setTime(DateUtil.DateFrom(FormatConstant.SFORMAT, new Date()));
+			food.setType(fooDto.getType());
+		}
 		foodMapper.insertFood(food);
 
 	}

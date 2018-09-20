@@ -24,4 +24,7 @@ public interface FoodMapper {
 
 	@Select("select id from food order by id desc limit 1")
 	int selectId();
+	
+	@Select("select id,name,type,colour,time from food order by id desc limit 1")
+	Food selectObj();
 }
