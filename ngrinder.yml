@@ -1,0 +1,23 @@
+version: "3.3"
+services: 
+  ngrinder-controller: 
+    image: ngrinder/controller
+    container_name: ngrinder-controller
+    volumes: 
+      - D:\data\ngrinder\controller:/opt/ngrinder-controller
+    ports: 
+      - "80:80"
+      - "16001:16001"
+      - "12000-12009:12000-12009"
+    #depends_on: 
+     # - ngrinder-agent
+      
+  ngrinder-agent: 
+    image: ngrinder/agent:3.4
+    container_name: ngrinder-agent
+    volumes: 
+      - D:\data\ngrinder\agent:/opt/ngrinder-agent
+    command: 
+      - ngrinder-controller:80
+    depends_on: 
+      - ngrinder-controller
