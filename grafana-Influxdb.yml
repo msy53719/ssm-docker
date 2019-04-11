@@ -1,0 +1,43 @@
+version: "3.3"
+services: 
+  grafana_graphite: 
+    image: grafana/grafana #grafana/grafana kamon/grafana_graphite
+    container_name: grafana_graphite
+    environment:
+      - HTTP_USER=admin
+      - HTTP_PASS=admin
+      - INFLUXDB_HOST=influxdb
+      - INFLUXDB_PORT=8086
+      - INFLUXDB_NAME=grafanadb
+      - INFLUXDB_USER=root
+      - INFLUXDB_PASS=root
+    ports:
+      - '80:80'
+      - '81:81'
+      - '8125:8125/udp'
+      - '8126:8126'
+      - '2003:2003'
+      - '3000:3000'
+    #volumes:
+     # - ./data/whisper:/opt/graphite/storage/whisper
+     # - ./data/grafana:/opt/grafana/data
+     # - ./log/graphite:/opt/graphite/storage/log
+      #- ./log/supervisor:/var/log/supervisor
+    depends_on: 
+      - influxdb
+      
+  influxdb: 
+    image: influxdb
+    container_name: influxdb
+    environment:
+      - INFLUXDB_DB=grafanadb
+      - INFLUXDB_ADMIN_USER=root
+      - INFLUXDB_ADMIN_PASSWORD=root
+      - INFLUXDB_USER=admin
+      - INFLUXDB_USER_PASSWORD=admin
+    #volumes: 
+      #- D:\data\ngrinder\agent:/opt/ngrinder-agent
+    ports:
+      - '8086:8086'
+      - '8083:8083'
+      #- '2003:2003'

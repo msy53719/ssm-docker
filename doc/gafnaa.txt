@@ -1,0 +1,45 @@
+influxdb:
+  image: influxdb:latest
+  container_name: tig-influxdb
+  ports:
+    - "8083:8083"
+    - "8086:8086"
+    - "8090:8090"
+  env_file:
+    - 'env.influxdb'
+  volumes:
+    # Data persistency
+    # sudo mkdir -p ./influxdb/data
+    - ./influxdb/data:/var/lib/influxdb
+    # 配置docker里的时间为东八区时间
+    - ./etc/timezone:/etc/timezone:ro
+    - ./etc/localtime:/etc/localtime:ro
+  restart: unless-stopped #停止后自动
+
+telegraf:
+  image: telegraf:latest
+  container_name: tig-telegraf
+  links:
+    - influxdb
+  volumes:
+    - ./telegraf.conf:/etc/telegraf/telegraf.conf:ro
+    - ./etc/timezone:/etc/timezone:ro
+    - ./etc/localtime:/etc/localtime:ro
+  restart: unless-stopped
+
+grafana:
+  image: grafana/grafana:latest
+  container_name: tig-grafana
+  ports:
+    - "3000:3000"
+  env_file:
+    - 'env.grafana'
+  links:
+    - influxdb
+  volumes:
+    # Data persistency
+    # sudo mkdir -p ./grafana/data; chown 472:472 ./grafana/data
+    - ./grafana/data:/var/lib/grafana
+    - ./etc/timezone:/etc/timezone:ro
+    - ./etc/localtime:/etc/localtime:ro
+  restart: unless-stopped
