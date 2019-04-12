@@ -11,6 +11,7 @@ services:
       - INFLUXDB_NAME=grafanadb
       - INFLUXDB_USER=root
       - INFLUXDB_PASS=root
+      - GF_INSTALL_PLUGINS=grafana-clock-panel,grafana-simple-json-datasource
     ports:
       - '80:80'
       - '81:81'
