@@ -1,0 +1,16 @@
+version: '3.3'
+services:
+  nginx-server:
+    image: nginx:latest
+    container_name: nginx-server
+    environment:
+    - NGINX_HOST=foobar.com
+    - NGINX_PORT=80
+    volumes: -./nginx.conf:/etc/nginx/nginx.conf
+    ports:
+    - 8080:8080
+    netwotrks:
+    - SLAVE_NETWORK_NAME
+networks:
+  SLAVE_NETWORK_NAME:
+    external: true

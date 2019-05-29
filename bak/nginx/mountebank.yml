@@ -1,0 +1,29 @@
+version: "3.3"
+services: 
+  mountebank-server1: 
+    image: mountebank:v1
+    container_name: mountebank-server1
+    enviroment: 
+      -LANG=en_US.UTF-8
+    ports: 
+      - 2525:2525
+      - 2526:2526
+    netwotrks: 
+      -  SLAVE_NETWORK_NAME
+    #depends_on: 
+     # - ngrinder-agent
+      
+  mountebank-server2: 
+    image: mountebank:v1
+    container_name: mountebank-server2
+    enviroment: 
+      -LANG=en_US.UTF-8
+    ports: 
+      - 2525:2525
+      - 2526:2526
+    netwotrks: 
+      -  SLAVE_NETWORK_NAME
+      
+networks: 
+  SLAVE_NETWORK_NAME: 
+    external: true
